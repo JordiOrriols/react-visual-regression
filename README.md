@@ -62,10 +62,6 @@ describe('Test Component', () => {
 
     return generateImage(component, {
       stylesheet: '../../style.css',
-      viewport: {
-        width: 1000,
-        height: 860
-      }
     }).then(image => {
       expect(image).toMatchImageSnapshot();
     });
