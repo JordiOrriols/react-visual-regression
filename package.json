@@ -1,6 +1,6 @@
 {
   "name": "react-visual-regresion",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Visual regresion tool for React components",
   "main": "index.js",
   "scripts": {
