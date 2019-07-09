@@ -29,11 +29,7 @@ generateImage(component, options);
 options = {
   // Path to .css file
   stylesheet: undefined;
-  // Change size of screenshot
-  viewport: {
-    width: 800,
-    height: 600,
-  },
+  device: 'iPhone X',
   renderer: ReactDOMServer.renderToStaticMarkup,
   image: {
     // Path to save image, likely unnecessary
@@ -41,6 +37,11 @@ options = {
   }
 }
 ```
+
+Device Emulation
+Select a device from the following list:
+https://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js
+userAgent, width, height, deviceScaleFactor will be automatically filled.
 
 ## Integration Example
 

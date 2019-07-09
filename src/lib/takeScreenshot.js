@@ -6,9 +6,13 @@ module.exports = async function(template, opts) {
   if (!browser) browser = await puppeteer.launch();
 
   const page = await browser.newPage();
-  await page.setContent(template);
+  const emulateDevice =
+    puppeteer.devices.indexOf(opts.device) !== -1
+      ? opts.device
+      : puppeteer.devices['iPhone X'];
+  await page.emulate(emulateDevice);
 
-  await page.setViewport(opts.viewport);
+  await page.setContent(template);
 
   const image = await page.screenshot(opts.image);
   page.close();
