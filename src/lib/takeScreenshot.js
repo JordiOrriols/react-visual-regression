@@ -1,12 +1,17 @@
 const puppeteer = require('puppeteer');
 
+let browser;
+
 module.exports = async function(template, opts) {
-  const browser = await puppeteer.launch(opts.puppeteerOptions);
+  if (!browser) browser = await puppeteer.launch();
+
   const page = await browser.newPage();
   await page.setContent(template);
+
   await page.setViewport(opts.viewport);
+
   const image = await page.screenshot(opts.image);
-  browser.close();
+  page.close();
 
   return image;
 };
