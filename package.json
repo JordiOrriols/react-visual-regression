@@ -1,7 +1,7 @@
 {
-  "name": "component-image",
-  "version": "2.1.1",
-  "description": "Generate image snapshots of React components",
+  "name": "react-visual-regresion",
+  "version": "0.0.1",
+  "description": "Visual regresion tool for React components",
   "main": "index.js",
   "scripts": {
     "precommit": "pretty-quick --staged",
@@ -9,17 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/corygibbons/component-image.git"
+    "url": "git+https://github.com/JordiOrriols/react-visual-regresion.git"
   },
   "keywords": [
     "react",
     "component",
-    "image"
+    "visual regresion",
+    "testing",
+    "unit testing"
   ],
-  "author": "Cory Gibbons",
+  "author": "Jordi Orriols",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/corygibbons/component-image/issues"
+    "url": "https://github.com/JordiOrriols/react-visual-regresion/issues"
   },
   "dependencies": {
     "lodash.merge": "^4.6.1",
