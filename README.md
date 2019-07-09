@@ -18,7 +18,7 @@ npm install react-visual-regresion
 #### Use
 
 ```js
-import { generateImage } from 'component-image';
+import { generateImage } from 'react-visual-regresion';
 
 generateImage(component, options);
 ```
@@ -50,7 +50,7 @@ Usage with `jest-image-snapshot`:
 
 ```js
 import React from 'react';
-import { generateImage } from 'component-image'
+import { generateImage } from 'react-visual-regresion'
 
 const component = (
   <div>
