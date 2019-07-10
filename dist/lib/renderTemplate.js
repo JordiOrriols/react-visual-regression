@@ -40,7 +40,7 @@ var parseStyleSheet_1 = require("./parseStyleSheet");
 var path_1 = require("path");
 var nunjucks_1 = require("nunjucks");
 var tplOpts = {
-    path: path_1.join(__dirname, '../view'),
+    path: path_1.join(__dirname, '../../view'),
     view: 'index.njk',
 };
 nunjucks_1.configure(tplOpts.path, {
@@ -67,4 +67,3 @@ exports.renderTemplate = function (component, stylesheet) {
         });
     });
 };
-//# sourceMappingURL=renderTemplate.js.map

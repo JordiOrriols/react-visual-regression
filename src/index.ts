@@ -20,7 +20,7 @@ const defaultOpts: Options = {
   },
 };
 
-export const generateImage = async function (component: React.ReactElement, options: Options) {
+export async function generateImage (component: React.ReactElement, options: Options): Promise<Buffer> {
 
   const opts = Object.assign(defaultOpts, options);
 
@@ -30,4 +30,5 @@ export const generateImage = async function (component: React.ReactElement, opti
   );
   
   return await takeScreenshot(template, opts);
+  
 };

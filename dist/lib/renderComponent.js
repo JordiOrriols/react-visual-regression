@@ -13,4 +13,3 @@ exports.renderComponent = function (component) {
         throw Error('Not a valid React component');
     }
 };
-//# sourceMappingURL=renderComponent.js.map

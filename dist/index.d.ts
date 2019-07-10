@@ -1,3 +1,5 @@
+/// <reference types="react" />
+/// <reference types="node" />
 import { Device } from "puppeteer/DeviceDescriptors";
 export interface Options {
     stylesheet?: string;
@@ -7,4 +9,4 @@ export interface Options {
         path?: string;
     };
 }
-//# sourceMappingURL=index.d.ts.map
+export declare function generateImage(component: React.ReactElement, options: Options): Promise<Buffer>;

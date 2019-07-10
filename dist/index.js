@@ -44,7 +44,7 @@ var defaultOpts = {
         path: undefined,
     },
 };
-var generateImage = function (component, options) {
+function generateImage(component, options) {
     return __awaiter(this, void 0, void 0, function () {
         var opts, template;
         return __generator(this, function (_a) {
@@ -59,6 +59,6 @@ var generateImage = function (component, options) {
             }
         });
     });
-};
-module.exports = generateImage;
-//# sourceMappingURL=index.js.map
+}
+exports.generateImage = generateImage;
+;

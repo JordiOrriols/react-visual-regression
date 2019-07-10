@@ -4,7 +4,7 @@ import { join } from 'path';
 import { configure, render } from 'nunjucks';
 
 const tplOpts = {
-  path: join(__dirname, '../view'),
+  path: join(__dirname, '../../view'),
   view: 'index.njk',
 };
 

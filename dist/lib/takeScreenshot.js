@@ -77,4 +77,3 @@ exports.takeScreenshot = function (template, opts) {
         });
     });
 };
-//# sourceMappingURL=takeScreenshot.js.map

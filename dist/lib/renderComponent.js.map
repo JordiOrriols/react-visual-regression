@@ -1,1 +1,0 @@
-{"version":3,"file":"renderComponent.js","sourceRoot":"","sources":["../../src/lib/renderComponent.ts"],"names":[],"mappings":";;;;;AAAA,4DAA8C;AAEjC,QAAA,eAAe,GAAG,UAC7B,SAA6B;IAE7B,IAAI;QACF,IAAM,iBAAiB,GAAG,gBAAc,CAAC,oBAAoB,CAAC,SAAS,CAAC,CAAC;QACzE,OAAO,iBAAiB,CAAC;KAC1B;IAAC,OAAO,CAAC,EAAE;QACV,MAAM,KAAK,CAAC,6BAA6B,CAAC,CAAC;KAC5C;AACH,CAAC,CAAC"}
