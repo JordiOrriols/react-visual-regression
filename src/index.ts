@@ -5,22 +5,21 @@ import { takeScreenshot } from './lib/takeScreenshot';
 
 export interface Options {
   stylesheet?: string;
-  renderer?: any;
   device?: Device;
-  image?: {
-    path?: string
-  }
 }
 
 const defaultOpts: Options = {
   stylesheet: undefined,
-  renderer: undefined,
-  image: {
-    path: undefined,
-  },
+  device: undefined
 };
 
-export async function render (component: React.ReactElement, options: Options): Promise<Buffer> {
+export function createDevice(options: Options): (component: React.ReactElement) => Promise<string> {
+  return async (component: React.ReactElement) => {
+    return await render(component, options);
+  };
+}
+
+export async function render (component: React.ReactElement, options: Options): Promise<string> {
 
   const opts = Object.assign(defaultOpts, options);
 

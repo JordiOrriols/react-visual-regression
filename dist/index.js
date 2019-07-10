@@ -39,12 +39,21 @@ var renderTemplate_1 = require("./lib/renderTemplate");
 var takeScreenshot_1 = require("./lib/takeScreenshot");
 var defaultOpts = {
     stylesheet: undefined,
-    renderer: undefined,
-    image: {
-        path: undefined,
-    },
+    device: undefined
 };
-function generateImage(component, options) {
+function createDevice(options) {
+    var _this = this;
+    return function (component) { return __awaiter(_this, void 0, void 0, function () {
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0: return [4, render(component, options)];
+                case 1: return [2, _a.sent()];
+            }
+        });
+    }); };
+}
+exports.createDevice = createDevice;
+function render(component, options) {
     return __awaiter(this, void 0, void 0, function () {
         var opts, template;
         return __generator(this, function (_a) {
@@ -60,5 +69,5 @@ function generateImage(component, options) {
         });
     });
 }
-exports.generateImage = generateImage;
+exports.render = render;
 ;

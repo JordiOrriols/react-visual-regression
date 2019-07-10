@@ -68,7 +68,7 @@ exports.takeScreenshot = function (template, opts) {
                     return [4, page.setContent(template)];
                 case 5:
                     _a.sent();
-                    return [4, page.screenshot(opts.image)];
+                    return [4, page.screenshot()];
                 case 6:
                     image = _a.sent();
                     page.close();

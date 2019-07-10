@@ -5,6 +5,7 @@ import { Options } from "..";
 let browser: Browser;
 
 export const takeScreenshot =  async function(template: string, opts: Options) {
+  
   if (!browser) browser = await launch();
 
   const page = await browser.newPage();
@@ -13,13 +14,15 @@ export const takeScreenshot =  async function(template: string, opts: Options) {
     (opts.device && Object.values(devices).indexOf(opts.device) !== -1)
       ? opts.device
       : devices['iPhone X'];
-      
+
   await page.emulate(emulateDevice);
 
   await page.setContent(template);
 
-  const image = await page.screenshot(opts.image);
+  const image = await page.screenshot();
+
   page.close();
 
   return image;
+
 };

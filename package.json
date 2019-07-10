@@ -37,8 +37,10 @@
   },
   "devDependencies": {
     "@types/jest": "24.0.15",
+    "@types/jest-image-snapshot": "2.8.0",
     "codecov": "^3.0.2",
     "jest": "24.8.0",
+    "jest-image-snapshot": "2.9.0",
     "ts-jest": "24.0.2",
     "typescript": "3.5.3"
   },
