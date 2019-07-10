@@ -1,11 +1,12 @@
-import { launch, Browser } from "puppeteer";
-import * as devices from "puppeteer/DeviceDescriptors";
-import { Options } from "..";
+import { launch, Browser } from 'puppeteer';
+import * as devices from 'puppeteer/DeviceDescriptors';
+
+import { Options } from '..';
 
 let browser: Browser;
 
-export const takeScreenshot =  async function(template: string, opts: Options) {
-  
+export const takeScreenshot =  async (template: string, opts: Options): string => {
+
   if (!browser) browser = await launch();
 
   const page = await browser.newPage();
@@ -21,7 +22,7 @@ export const takeScreenshot =  async function(template: string, opts: Options) {
 
   const image = await page.screenshot();
 
-  page.close();
+  await page.close();
 
   return image;
 

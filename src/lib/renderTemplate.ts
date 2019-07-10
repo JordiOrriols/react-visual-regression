@@ -1,21 +1,26 @@
-import { renderComponent } from './renderComponent';
-import { parseStyleSheet } from './parseStyleSheet';
-import { join } from 'path';
 import { configure, render } from 'nunjucks';
+import { join } from 'path';
+
+import { parseStyleSheet } from './parseStyleSheet';
+import { renderComponent } from './renderComponent';
 
 const tplOpts = {
   path: join(__dirname, '../../view'),
-  view: 'index.njk',
+  view: 'index.njk'
 };
 
 configure(tplOpts.path, {
-  autoescape: true,
+  autoescape: true
 });
 
-export const renderTemplate = async function (component: React.ReactElement, stylesheet: string) {
+export const renderTemplate = async (reactElement: React.ReactElement, stylesheet: string): Promise<string> => {
+
+  const component = renderComponent(reactElement);
+  const styles = parseStyleSheet(stylesheet);
+
   const template = render(tplOpts.view, {
-    component: await renderComponent(component),
-    styles: await parseStyleSheet(stylesheet),
+    component,
+    styles
   });
 
   return template;

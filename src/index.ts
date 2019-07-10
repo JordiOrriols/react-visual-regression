@@ -1,4 +1,4 @@
-import { Device } from "puppeteer/DeviceDescriptors";
+import { Device } from 'puppeteer/DeviceDescriptors';
 
 import { renderTemplate } from './lib/renderTemplate';
 import { takeScreenshot } from './lib/takeScreenshot';
@@ -13,21 +13,21 @@ const defaultOpts: Options = {
   device: undefined
 };
 
-export function createDevice(options: Options): (component: React.ReactElement) => Promise<string> {
-  return async (component: React.ReactElement) => {
-    return await render(component, options);
+export const createDevice = (options: Options): (component: React.ReactElement) => Promise<string> => {
+  return async (component: React.ReactElement): Promise<string> => {
+    return render(component, options);
   };
-}
+};
 
-export async function render (component: React.ReactElement, options: Options): Promise<string> {
+export const render = async (component: React.ReactElement, options: Options): Promise<string> => {
 
-  const opts = Object.assign(defaultOpts, options);
+  const opts = {...defaultOpts, ...options};
 
   const template = await renderTemplate(
     component,
-    opts.stylesheet? opts.stylesheet: ''
+    opts.stylesheet ? opts.stylesheet : ''
   );
-  
-  return await takeScreenshot(template, opts);
+
+  return takeScreenshot(template, opts);
 
 };
