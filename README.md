@@ -30,10 +30,13 @@ generateImage(component, options);
 #### Default options
 
 ```js
+
+import * as devices from "puppeteer/DeviceDescriptors";
+
 options = {
   // Path to .css file
   stylesheet: undefined;
-  device: 'iPhone X',
+  device: devices['iPhone X'],
   renderer: ReactDOMServer.renderToStaticMarkup,
   image: {
     // Path to save image, likely unnecessary
@@ -45,7 +48,7 @@ options = {
 Device Emulation
 Select a device from the following list:
 https://github.com/GoogleChrome/puppeteer/blob/master/lib/DeviceDescriptors.js
-userAgent, width, height, deviceScaleFactor will be automatically filled.
+userAgent, width, height, deviceScaleFactor will be automatically used.
 
 ## Integration Example
 
