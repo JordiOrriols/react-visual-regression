@@ -1,5 +1,3 @@
-const path = require('path');
-const puppeteer = require('puppeteer');
 const merge = require('lodash.merge');
 
 const renderTemplate = require('./lib/renderTemplate');
@@ -7,10 +5,6 @@ const takeScreenshot = require('./lib/takeScreenshot');
 
 const defaultOpts = {
   stylesheet: undefined,
-  viewport: {
-    width: 800,
-    height: 600,
-  },
   renderer: undefined,
   image: {
     path: undefined,
