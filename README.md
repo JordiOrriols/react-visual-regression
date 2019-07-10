@@ -62,13 +62,13 @@ const component = (
 );
 
 describe('Test Component', () => {
-  it('has no visual regressions', () => {
+  it('has no visual regressions', async () => {
 
-    return generateImage(component, {
+    const image = await generateImage(component, {
       stylesheet: '../../style.css',
-    }).then(image => {
-      expect(image).toMatchImageSnapshot();
     });
+
+    expect(image).toMatchImageSnapshot();
 
   };
 };
