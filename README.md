@@ -22,9 +22,9 @@ npm install react-visual-regression
 #### Use
 
 ```js
-import { generateImage } from 'react-visual-regression';
+import { render } from 'react-visual-regression';
 
-generateImage(component, options);
+render(component, options);
 ```
 
 #### Default options
@@ -56,7 +56,7 @@ Usage with `jest-image-snapshot`:
 
 ```js
 import React from 'react';
-import { generateImage } from 'react-visual-regression'
+import { render } from 'react-visual-regression'
 
 const component = (
   <div>
@@ -67,7 +67,7 @@ const component = (
 describe('Test Component', () => {
   it('has no visual regressions', async () => {
 
-    const image = await generateImage(component, {
+    const image = await render(component, {
       stylesheet: '../../style.css',
     });
 

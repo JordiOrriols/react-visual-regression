@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import React from 'react';
-import { generateImage } from '../src/index';
+import { render } from '../src/index';
 
 jest.setTimeout(30000);
 
@@ -15,7 +15,7 @@ const component = (
 describe('generateImage()', () => {
   it('saves an image', async () => {
 
-    await generateImage(component, {
+    await render(component, {
       stylesheet: path.resolve(__dirname, 'data/sample.css'),
       image: {
         path: './test/data/image.png',

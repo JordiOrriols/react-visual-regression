@@ -13,6 +13,7 @@ export const takeScreenshot =  async function(template: string, opts: Options) {
     (opts.device && Object.values(devices).indexOf(opts.device) !== -1)
       ? opts.device
       : devices['iPhone X'];
+      
   await page.emulate(emulateDevice);
 
   await page.setContent(template);
