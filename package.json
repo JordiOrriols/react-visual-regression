@@ -1,7 +1,7 @@
 {
-  "name": "react-visual-regresion",
+  "name": "react-visual-regression",
   "version": "0.0.3",
-  "description": "Visual regresion tool for React components",
+  "description": "Visual regression tool for React components",
   "main": "index.js",
   "scripts": {
     "precommit": "pretty-quick --staged",
@@ -9,19 +9,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JordiOrriols/react-visual-regresion.git"
+    "url": "git+https://github.com/JordiOrriols/react-visual-regression.git"
   },
   "keywords": [
     "react",
     "component",
-    "visual regresion",
+    "visual regression",
     "testing",
     "unit testing"
   ],
   "author": "Jordi Orriols",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JordiOrriols/react-visual-regresion/issues"
+    "url": "https://github.com/JordiOrriols/react-visual-regression/issues"
   },
   "dependencies": {
     "lodash.merge": "4.6.1",

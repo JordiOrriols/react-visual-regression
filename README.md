@@ -1,4 +1,4 @@
-# React Visual Regresion
+# React Visual regression
 
 Usually, we only test the javascript part of our components, leaving all styles behavior uncovered.
 We should test the responsiveness of our components, CSS ellipsis, empty props as well.
@@ -12,13 +12,13 @@ Also will use the emulate tools from Pupetter to allow check our responsive desi
 #### Install
 
 ```
-npm install react-visual-regresion
+npm install react-visual-regression
 ```
 
 #### Use
 
 ```js
-import { generateImage } from 'react-visual-regresion';
+import { generateImage } from 'react-visual-regression';
 
 generateImage(component, options);
 ```
@@ -49,7 +49,7 @@ Usage with `jest-image-snapshot`:
 
 ```js
 import React from 'react';
-import { generateImage } from 'react-visual-regresion'
+import { generateImage } from 'react-visual-regression'
 
 const component = (
   <div>
