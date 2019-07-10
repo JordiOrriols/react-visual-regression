@@ -37,11 +37,7 @@ options = {
   // Path to .css file
   stylesheet: undefined;
   device: devices['iPhone X'],
-  renderer: ReactDOMServer.renderToStaticMarkup,
-  image: {
-    // Path to save image, likely unnecessary
-    path: undefined,
-  }
+  bodyPadding: 10
 }
 ```
 
