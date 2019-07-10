@@ -1,6 +1,6 @@
 import path from 'path';
 import React from 'react';
-import { render } from '../src/index';
+import { render } from '../../src/index';
 
 jest.setTimeout(30000);
 
@@ -16,7 +16,7 @@ describe('render', () => {
   it('generates an image', async () => {
 
     const image = await render(component, {
-      stylesheet: path.resolve(__dirname, 'data/sample.css')
+      stylesheet: path.resolve(__dirname, '../data/sample.css')
     });
 
     expect(image).toBeTruthy();
