@@ -5,7 +5,7 @@ import { Options } from '..';
 
 let browser: Browser;
 
-export const takeScreenshot =  async (template: string, opts: Options): string => {
+export const takeScreenshot =  async (template: string, opts: Options): Promise<string> => {
 
   if (!browser) browser = await launch();
 
