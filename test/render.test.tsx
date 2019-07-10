@@ -19,7 +19,7 @@ describe('render', () => {
       stylesheet: path.resolve(__dirname, 'data/sample.css')
     });
 
-    expect(image).toBe(true);
+    expect(image).toBeTruthy();
   });
 
 });
