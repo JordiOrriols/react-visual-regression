@@ -1,5 +1,6 @@
 import path from 'path';
 import React from 'react';
+
 import { render } from '../../src/index';
 
 jest.setTimeout(30000);

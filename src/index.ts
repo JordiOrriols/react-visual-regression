@@ -1,23 +1,23 @@
 import * as devices from 'puppeteer/DeviceDescriptors';
 
 import { renderTemplate } from './lib/renderTemplate';
-import { takeScreenshot } from './lib/takeScreenshot';
+import { defaultDevice, takeScreenshot } from './lib/takeScreenshot';
 
 export interface InputOptions {
   stylesheet?: string;
-  device?: devices.Device;
+  device?: devices.Device | string;
   bodyPadding?: number;
 }
 
 export interface Options {
   stylesheet: string;
-  device: devices.Device;
+  device: devices.Device | string;
   bodyPadding: number;
 }
 
 const defaultOpts: Options = {
   stylesheet: '',
-  device: devices['iPhone X'],
+  device: defaultDevice,
   bodyPadding: 10
 };
 
@@ -29,7 +29,7 @@ export const createDevice = (options: InputOptions): (component: React.ReactElem
 
 export const render = async (component: React.ReactElement, options: InputOptions): Promise<string> => {
 
-  const opts: Options = {...defaultOpts, ...options};
+  const opts: Options = { ...defaultOpts, ...options };
 
   const template = await renderTemplate(
     component,

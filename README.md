@@ -103,12 +103,12 @@ describe('Test Component', () => {
 
     const iPhoneRender = createDevice({
         stylesheet,
-        device: devices['iPhone X']
+        device: 'iPhone X'
     });
 
     const iPadRender = createDevice({
         stylesheet,
-        device: devices['iPad']
+        device: 'iPad'
     });
 
     beforeEach(() => {

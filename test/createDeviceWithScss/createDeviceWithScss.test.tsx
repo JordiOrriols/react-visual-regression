@@ -1,8 +1,8 @@
-import React from 'react';
-import path from 'path';
-import { createDevice } from '../../src/index';
-import * as devices from "puppeteer/DeviceDescriptors";
 import { toMatchImageSnapshot } from 'jest-image-snapshot';
+import path from 'path';
+import React from 'react';
+
+import { createDevice } from '../../src/index';
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -23,12 +23,12 @@ describe('Test Component', () => {
 
     const iPhoneRender = createDevice({
         stylesheet,
-        device: devices['iPhone X']
+        device: 'iPhone X'
     });
 
     const iPadRender = createDevice({
         stylesheet,
-        device: devices['iPad']
+        device: 'iPad'
     });
 
     beforeEach(() => {

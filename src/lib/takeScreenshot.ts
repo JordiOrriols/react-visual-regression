@@ -5,16 +5,26 @@ import { Options } from '..';
 
 let browser: Browser;
 
-export const takeScreenshot =  async (template: string, opts: Options): Promise<string> => {
+export const defaultDevice = 'iPhone X';
+
+const getDevice = (device: devices.Device | string): devices.Device => {
+  if (!device) return devices[defaultDevice];
+
+  if (typeof device === 'string') {
+    return (Object.keys(devices).indexOf(device) !== -1) ? devices[device] : devices[defaultDevice];
+  }
+
+  return device;
+
+};
+
+export const takeScreenshot = async (template: string, opts: Options): Promise<string> => {
 
   if (!browser) browser = await launch();
 
   const page = await browser.newPage();
 
-  const emulateDevice =
-    (opts.device && Object.values(devices).indexOf(opts.device) !== -1)
-      ? opts.device
-      : devices['iPhone X'];
+  const emulateDevice = getDevice(opts.device);
 
   await page.emulate(emulateDevice);
 
