@@ -11,7 +11,7 @@ export const parseStyleSheet = (stylesheet: string): string => {
         file: stylesheet
       });
 
-      return styles.css;
+      return styles.css.toString();
     } catch (e) {
       return '';
     }

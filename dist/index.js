@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -34,40 +45,32 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var renderTemplate_1 = require("./lib/renderTemplate");
 var takeScreenshot_1 = require("./lib/takeScreenshot");
 var defaultOpts = {
-    stylesheet: undefined,
-    device: undefined
+    stylesheet: '',
+    device: takeScreenshot_1.defaultDevice,
+    bodyPadding: 10
 };
-function createDevice(options) {
-    var _this = this;
+exports.createDevice = function (options) {
     return function (component) { return __awaiter(_this, void 0, void 0, function () {
         return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4, render(component, options)];
-                case 1: return [2, _a.sent()];
-            }
+            return [2, exports.render(component, options)];
         });
     }); };
-}
-exports.createDevice = createDevice;
-function render(component, options) {
-    return __awaiter(this, void 0, void 0, function () {
-        var opts, template;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    opts = Object.assign(defaultOpts, options);
-                    return [4, renderTemplate_1.renderTemplate(component, opts.stylesheet ? opts.stylesheet : '')];
-                case 1:
-                    template = _a.sent();
-                    return [4, takeScreenshot_1.takeScreenshot(template, opts)];
-                case 2: return [2, _a.sent()];
-            }
-        });
+};
+exports.render = function (component, options) { return __awaiter(_this, void 0, void 0, function () {
+    var opts, template;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                opts = __assign({}, defaultOpts, options);
+                return [4, renderTemplate_1.renderTemplate(component, opts.stylesheet, opts.bodyPadding)];
+            case 1:
+                template = _a.sent();
+                return [2, takeScreenshot_1.takeScreenshot(template, opts)];
+        }
     });
-}
-exports.render = render;
-;
+}); };

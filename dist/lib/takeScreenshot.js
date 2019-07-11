@@ -41,39 +41,47 @@ var __importStar = (this && this.__importStar) || function (mod) {
     result["default"] = mod;
     return result;
 };
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var puppeteer_1 = require("puppeteer");
 var devices = __importStar(require("puppeteer/DeviceDescriptors"));
 var browser;
-exports.takeScreenshot = function (template, opts) {
-    return __awaiter(this, void 0, void 0, function () {
-        var page, emulateDevice, image;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0:
-                    if (!!browser) return [3, 2];
-                    return [4, puppeteer_1.launch()];
-                case 1:
-                    browser = _a.sent();
-                    _a.label = 2;
-                case 2: return [4, browser.newPage()];
-                case 3:
-                    page = _a.sent();
-                    emulateDevice = (opts.device && Object.values(devices).indexOf(opts.device) !== -1)
-                        ? opts.device
-                        : devices['iPhone X'];
-                    return [4, page.emulate(emulateDevice)];
-                case 4:
-                    _a.sent();
-                    return [4, page.setContent(template)];
-                case 5:
-                    _a.sent();
-                    return [4, page.screenshot()];
-                case 6:
-                    image = _a.sent();
-                    page.close();
-                    return [2, image];
-            }
-        });
-    });
+exports.defaultDevice = 'iPhone X';
+var getDevice = function (device) {
+    if (!device)
+        return devices[exports.defaultDevice];
+    if (typeof device === 'string') {
+        return (Object.keys(devices).indexOf(device) !== -1) ? devices[device] : devices[exports.defaultDevice];
+    }
+    return device;
 };
+exports.takeScreenshot = function (template, opts) { return __awaiter(_this, void 0, void 0, function () {
+    var page, emulateDevice, image;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                if (!!browser) return [3, 2];
+                return [4, puppeteer_1.launch()];
+            case 1:
+                browser = _a.sent();
+                _a.label = 2;
+            case 2: return [4, browser.newPage()];
+            case 3:
+                page = _a.sent();
+                emulateDevice = getDevice(opts.device);
+                return [4, page.emulate(emulateDevice)];
+            case 4:
+                _a.sent();
+                return [4, page.setContent(template)];
+            case 5:
+                _a.sent();
+                return [4, page.screenshot()];
+            case 6:
+                image = _a.sent();
+                return [4, page.close()];
+            case 7:
+                _a.sent();
+                return [2, image];
+        }
+    });
+}); };

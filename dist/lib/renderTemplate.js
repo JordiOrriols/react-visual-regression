@@ -34,36 +34,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-var renderComponent_1 = require("./renderComponent");
-var parseStyleSheet_1 = require("./parseStyleSheet");
-var path_1 = require("path");
 var nunjucks_1 = require("nunjucks");
+var path_1 = require("path");
+var parseStyleSheet_1 = require("./parseStyleSheet");
+var renderComponent_1 = require("./renderComponent");
 var tplOpts = {
     path: path_1.join(__dirname, '../../view'),
-    view: 'index.njk',
+    view: 'index.njk'
 };
 nunjucks_1.configure(tplOpts.path, {
-    autoescape: true,
+    autoescape: true
 });
-exports.renderTemplate = function (component, stylesheet) {
-    return __awaiter(this, void 0, void 0, function () {
-        var template, _a, _b, _c;
-        return __generator(this, function (_d) {
-            switch (_d.label) {
-                case 0:
-                    _a = nunjucks_1.render;
-                    _b = [tplOpts.view];
-                    _c = {};
-                    return [4, renderComponent_1.renderComponent(component)];
-                case 1:
-                    _c.component = _d.sent();
-                    return [4, parseStyleSheet_1.parseStyleSheet(stylesheet)];
-                case 2:
-                    template = _a.apply(void 0, _b.concat([(_c.styles = _d.sent(),
-                            _c)]));
-                    return [2, template];
-            }
+exports.renderTemplate = function (reactElement, stylesheet, bodyPadding) { return __awaiter(_this, void 0, void 0, function () {
+    var component, styles, parsedStylesheed, template;
+    return __generator(this, function (_a) {
+        component = renderComponent_1.renderComponent(reactElement);
+        styles = "body{padding:" + bodyPadding + "px}";
+        parsedStylesheed = parseStyleSheet_1.parseStyleSheet(stylesheet);
+        if (parsedStylesheed)
+            styles = styles + parsedStylesheed;
+        template = nunjucks_1.render(tplOpts.view, {
+            component: component,
+            styles: styles
         });
+        return [2, template];
     });
-};
+}); };
