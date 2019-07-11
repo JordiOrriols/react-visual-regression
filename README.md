@@ -75,7 +75,31 @@ describe('Test Component', () => {
 
 ### Real world example reusing settings
 
-It's recomended to use ```customSnapshotIdentifier````property in order to avoid errors
+I recommend this folder structure for your components
+
+my-component.tsx /.jsx                => your component
+my-component.scss / .css              => your styling
+my-component.test.tsx /.jsx           => convencional javascript unit testing
+my-component.visual.test.tsx / .jsx   => visual regresion unit testing
+
+With this pattern you can select when to run your visual regression tests with:
+
+To run all tests
+```
+jest
+```
+
+To run only visual regresion tests
+```
+jest --testPathPattern="visual.test.tsx"
+```
+
+To ignore visual regresion tests
+```
+jest --testPathIgnorePatterns="visual.test.tsx"
+```
+
+It's recommended to use ```customSnapshotIdentifier````property in order to avoid errors
 
 ```js
 import React from 'react';
@@ -139,6 +163,6 @@ describe('Test Component', () => {
 
 ### Benchmark
 
-Here I want to follow up how this library was improving over the versions.
+Follow up how this library was improving over the versions.
 
-0.0.8 => 212 snapshots on 288s
+0.0.8 => 212 snapshots on 288s (about 4.5 minutes)
