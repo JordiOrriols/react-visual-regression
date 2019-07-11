@@ -136,3 +136,9 @@ describe('Test Component', () => {
 
 });
 ```
+
+### Benchmark
+
+Here I want to follow up how this library was improving over the versions.
+
+0.0.8 => 212 snapshots on 288s

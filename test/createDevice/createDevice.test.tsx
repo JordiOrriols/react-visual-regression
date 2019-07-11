@@ -33,26 +33,24 @@ describe('Test Component', () => {
 
     beforeEach(() => {
         jest.setTimeout(10000);
-      });
+    });
 
     it('should be responsive', async () => {
         const componentWithLargeText = cardComponent('Mike');
         expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPhone-responsive' });
         expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPad-responsive' });
-        
     });
 
     it('should be responsive with large texts', async () => {
         const componentWithLargeText = cardComponent('Juan Moreno y Herrera-Jiménez');
         expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPhone-largeText' });
         expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPad-largeText' });
-        
     });
 
     it('should show goshted elements when disabled', async () => {
         const componentWithLargeText = cardComponent('Mike', true);
         expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPhone-disabled' });
-        
+
         // For this case we can skip different devices :)
         // expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot();
     });
