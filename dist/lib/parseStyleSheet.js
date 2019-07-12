@@ -20,7 +20,7 @@ exports.parseStyleSheet = function (stylesheet) {
             return styles.css.toString();
         }
         catch (e) {
-            return '';
+            throw new Error("Error when loading SCSS at path \"" + stylesheet + "\"");
         }
     }
     try {
@@ -28,6 +28,6 @@ exports.parseStyleSheet = function (stylesheet) {
         return styles;
     }
     catch (e) {
-        return '';
+        throw new Error("Error when loading CSS at path \"" + stylesheet + "\"");
     }
 };
