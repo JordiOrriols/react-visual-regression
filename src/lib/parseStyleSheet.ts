@@ -13,7 +13,7 @@ export const parseStyleSheet = (stylesheet: string): string => {
 
       return styles.css.toString();
     } catch (e) {
-      return '';
+      throw new Error(`Error when loading SCSS at path "${stylesheet}"`);
     }
   }
 
@@ -22,7 +22,7 @@ export const parseStyleSheet = (stylesheet: string): string => {
 
     return styles;
   } catch (e) {
-    return '';
+    throw new Error(`Error when loading CSS at path "${stylesheet}"`);
   }
 
 };
