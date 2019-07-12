@@ -20,7 +20,11 @@
     "component",
     "visual regression",
     "testing",
-    "unit testing"
+    "unit testing",
+    "css testing",
+    "testing library",
+    "image snapshot",
+    "jest"
   ],
   "author": "Jordi Orriols",
   "license": "MIT",
