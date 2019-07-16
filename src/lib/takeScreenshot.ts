@@ -22,8 +22,7 @@ export const takeScreenshot = async (template: string, opts: Options): Promise<s
 
   if (!browser) {
     browser = await launch({
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
-      headless: true
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
   }
 
