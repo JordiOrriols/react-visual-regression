@@ -61,7 +61,10 @@ exports.takeScreenshot = function (template, opts) { return __awaiter(_this, voi
         switch (_a.label) {
             case 0:
                 if (!!browser) return [3, 2];
-                return [4, puppeteer_1.launch()];
+                return [4, puppeteer_1.launch({
+                        args: ['--no-sandbox', '--disable-setuid-sandbox'],
+                        headless: true
+                    })];
             case 1:
                 browser = _a.sent();
                 _a.label = 2;
