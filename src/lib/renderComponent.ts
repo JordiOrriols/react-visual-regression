@@ -1,11 +1,7 @@
-import ReactDOMServer from 'react-dom/server';
+import { reactVirtualRenderer } from './reactVirtualRenderer';
 
 export const renderComponent = (component: React.ReactElement): string => {
-  try {
-    const renderedComponent = ReactDOMServer.renderToStaticMarkup(component);
+  const renderedComponent = reactVirtualRenderer(component);
 
-    return renderedComponent;
-  } catch (e) {
-    throw Error('Not a valid React component');
-  }
+  return renderedComponent.outerHTML;
 };
