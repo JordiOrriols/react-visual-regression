@@ -1,12 +1,12 @@
 /// <reference types="react" />
 import * as devices from 'puppeteer/DeviceDescriptors';
 export interface InputOptions {
-    stylesheet?: string;
+    stylesheet?: string | string[];
     device?: devices.Device | string;
     bodyPadding?: number;
 }
 export interface Options {
-    stylesheet: string;
+    stylesheet: string | string[];
     device: devices.Device | string;
     bodyPadding: number;
 }

@@ -1,1 +1,1 @@
-export declare const parseStyleSheet: (stylesheet: string) => string;
+export declare const parseStyleSheet: (stylesheet: string | string[]) => string;
