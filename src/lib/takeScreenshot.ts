@@ -20,7 +20,12 @@ const getDevice = (device: devices.Device | string): devices.Device => {
 
 export const takeScreenshot = async (template: string, opts: Options): Promise<string> => {
 
-  if (!browser) browser = await launch();
+  if (!browser) {
+    browser = await launch({
+      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      headless: true
+    });
+  }
 
   const page = await browser.newPage();
 
