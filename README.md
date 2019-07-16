@@ -76,11 +76,12 @@ describe('Test Component', () => {
 ### Real world example reusing settings
 
 I recommend this folder structure for your components
-
+```
 my-component.tsx /.jsx                => your component
 my-component.scss / .css              => your styling
 my-component.test.tsx /.jsx           => convencional javascript unit testing
 my-component.visual.test.tsx / .jsx   => visual regresion unit testing
+```
 
 With this pattern you can select when to run your visual regression tests with:
 
