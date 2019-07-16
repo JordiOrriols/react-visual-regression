@@ -13,7 +13,7 @@ configure(tplOpts.path, {
   autoescape: true
 });
 
-export const renderTemplate = async (reactElement: React.ReactElement, stylesheet: string, bodyPadding: number): Promise<string> => {
+export const renderTemplate = async (reactElement: React.ReactElement, stylesheet: string | string[], bodyPadding: number): Promise<string> => {
 
   const component = renderComponent(reactElement);
   let styles = `body{padding:${bodyPadding}px}`;

@@ -4,13 +4,13 @@ import { renderTemplate } from './lib/renderTemplate';
 import { defaultDevice, takeScreenshot } from './lib/takeScreenshot';
 
 export interface InputOptions {
-  stylesheet?: string;
+  stylesheet?: string | string[];
   device?: devices.Device | string;
   bodyPadding?: number;
 }
 
 export interface Options {
-  stylesheet: string;
+  stylesheet: string | string[];
   device: devices.Device | string;
   bodyPadding: number;
 }

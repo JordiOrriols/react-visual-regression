@@ -88,7 +88,6 @@
             true,
             1
         ],
-        "no-console": true,
         "no-construct": true,
         "no-debugger": true,
         "no-duplicate-imports": true,
