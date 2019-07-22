@@ -16,7 +16,9 @@ configure(tplOpts.path, {
 export const renderTemplate = async (reactElement: React.ReactElement, stylesheet: string | string[], bodyPadding: number): Promise<string> => {
 
   const component = renderComponent(reactElement);
-  let styles = `body{padding:${bodyPadding}px}`;
+
+  let styles = `body{padding:${bodyPadding}px}*{-o-transition-property: none !important;-moz-transition-property: none !important;-ms-transition-property: none !important;-webkit-transition-property: none !important;transition-property: none !important;}*{-webkit-animation: none !important;-moz-animation: none !important;-o-animation: none !important;-ms-animation: none !important;animation: none !important;}`;
+
   const parsedStylesheed = parseStyleSheet(stylesheet);
   if (parsedStylesheed) styles = styles + parsedStylesheed;
 

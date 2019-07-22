@@ -51,7 +51,7 @@ exports.renderTemplate = function (reactElement, stylesheet, bodyPadding) { retu
     var component, styles, parsedStylesheed, template;
     return __generator(this, function (_a) {
         component = renderComponent_1.renderComponent(reactElement);
-        styles = "body{padding:" + bodyPadding + "px}";
+        styles = "body{padding:" + bodyPadding + "px}*{-o-transition-property: none !important;-moz-transition-property: none !important;-ms-transition-property: none !important;-webkit-transition-property: none !important;transition-property: none !important;}*{-webkit-animation: none !important;-moz-animation: none !important;-o-animation: none !important;-ms-animation: none !important;animation: none !important;}";
         parsedStylesheed = parseStyleSheet_1.parseStyleSheet(stylesheet);
         if (parsedStylesheed)
             styles = styles + parsedStylesheed;
