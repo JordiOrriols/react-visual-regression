@@ -1,8 +1,4 @@
-# React Visual regression (Alpha version)
-
-***
-In development: Keep in mind that this package will change the API during this following weeks.
-***
+# React Visual regression
 
 Usually, we only test the javascript part of our components, leaving all styles behavior uncovered.
 We should test the responsiveness of our components, CSS ellipsis, empty props as well.
