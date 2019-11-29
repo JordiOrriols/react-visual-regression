@@ -8,7 +8,9 @@
     "lint": "tslint -c tslint.json -p tsconfig.json",
     "lintAndFix": "tslint -c tslint.json -p tsconfig.json --fix",
     "build": "tsc",
-    "test": "jest --testPathIgnorePatterns=benchmark --forceExit",
+    "test": "docker build -t visuals . && docker run visuals npm run test:base",
+    "test:accept": "docker build -t visuals . && docker run -v %cd%/test:/usr/visualregression/test visuals npm run test:base -- -u",
+    "test:base": "jest --testPathIgnorePatterns=benchmark --forceExit",
     "benchmark": "jest --testPathPattern=benchmark"
   },
   "repository": {
