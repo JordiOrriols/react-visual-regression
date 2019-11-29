@@ -51,6 +51,6 @@ export const imageSnapshotConfig = (customSnapshotIdentifier: string): MatchImag
     usedNames.push(customSnapshotIdentifier);
 
     return {
-        customSnapshotIdentifier
+        customSnapshotIdentifier: (): string => customSnapshotIdentifier
     };
 };
