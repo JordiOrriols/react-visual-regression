@@ -74,3 +74,13 @@ exports.render = function (component, options) { return __awaiter(_this, void 0,
         }
     });
 }); };
+var usedNames = [];
+exports.imageSnapshotConfig = function (customSnapshotIdentifier) {
+    if (usedNames.indexOf(customSnapshotIdentifier) !== -1) {
+        throw new Error("Error: The name '" + customSnapshotIdentifier + "' for the snapshot is already used.");
+    }
+    usedNames.push(customSnapshotIdentifier);
+    return {
+        customSnapshotIdentifier: customSnapshotIdentifier
+    };
+};

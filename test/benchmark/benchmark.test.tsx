@@ -2,7 +2,7 @@ import { toMatchImageSnapshot } from 'jest-image-snapshot';
 import path from 'path';
 import React from 'react';
 
-import { createDevice } from '../../src/index';
+import { createDevice, imageSnapshotConfig } from '../../src/index';
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -40,8 +40,8 @@ describe('Benchmark Test', () => {
 
     test.each(testIds)('Benchmark test #%s', async (index: string) => {
         const componentWithLargeText = cardComponent('Mike');
-        expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: `iPhone-responsive-${index}` });
-        expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: `iPad-responsive-${index}` });
+        expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot(imageSnapshotConfig(`iPhone-responsive-${index}`));
+        expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot(imageSnapshotConfig(`iPad-responsive-${index}`));
     });
 
 });

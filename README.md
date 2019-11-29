@@ -18,7 +18,7 @@ npm install react-visual-regression
 #### Use
 
 ```js
-import { render } from 'react-visual-regression';
+import { render } from "react-visual-regression";
 
 render(component, options);
 ```
@@ -47,8 +47,8 @@ userAgent, width, height, deviceScaleFactor will be automatically used.
 Usage with `jest-image-snapshot`:
 
 ```js
-import React from 'react';
-import { render } from 'react-visual-regression'
+import React from "react";
+import { render } from "react-visual-regression";
 
 const component = (
   <div>
@@ -56,15 +56,13 @@ const component = (
   </div>
 );
 
-describe('Test Component', () => {
-  it('has no visual regressions', async () => {
-
+describe("Test Component", () => {
+  it("has no visual regressions", async () => {
     const image = await render(component, {
-      stylesheet: '../../style.css',
+      stylesheet: "../../style.css"
     });
 
     expect(image).toMatchImageSnapshot();
-
   });
 });
 ```
@@ -72,6 +70,7 @@ describe('Test Component', () => {
 ### Real world example reusing settings
 
 I recommend this folder structure for your components
+
 ```
 my-component.tsx /.jsx                => your component
 my-component.scss / .css              => your styling
@@ -82,79 +81,93 @@ my-component.visual.test.tsx / .jsx   => visual regresion unit testing
 With this pattern you can select when to run your visual regression tests with:
 
 To run all tests
+
 ```
 jest
 ```
 
 To run only visual regresion tests
+
 ```
 jest --testPathPattern="visual.test.tsx"
 ```
 
 To ignore visual regresion tests
+
 ```
 jest --testPathIgnorePatterns="visual.test.tsx"
 ```
-
-It's recommended to use ```customSnapshotIdentifier````property in order to avoid errors
+Full Example
 
 ```js
-import React from 'react';
-import path from 'path';
-import { createDevice } from '../../src/index';
+import React from "react";
+import path from "path";
+import { createDevice, imageSnapshotConfig } from "../../src/index";
 import * as devices from "puppeteer/DeviceDescriptors";
-import { toMatchImageSnapshot } from 'jest-image-snapshot';
+import { toMatchImageSnapshot } from "jest-image-snapshot";
 
 expect.extend({ toMatchImageSnapshot });
 
-const cardComponent = (name: string, disabled: boolean = false): React.ReactElement => {
+const cardComponent = (
+  name: string,
+  disabled: boolean = false
+): React.ReactElement => {
+  const disabledClass = disabled ? "disabled" : "";
 
-    const disabledClass = (disabled) ? 'disabled' : '';
-
-    return (
-        <div className={`card ${disabledClass}`}>
-            <h1>Hello, {name}</h1>
-        </div>
-    );
+  return (
+    <div className={`card ${disabledClass}`}>
+      <h1>Hello, {name}</h1>
+    </div>
+  );
 };
 
-describe('Test Component', () => {
+describe("Test Component", () => {
+  const stylesheet = path.resolve(__dirname, "../data/sample.css");
 
-    const stylesheet = path.resolve(__dirname, '../data/sample.css');
+  const iPhoneRender = createDevice({
+    stylesheet,
+    device: "iPhone X"
+  });
 
-    const iPhoneRender = createDevice({
-        stylesheet,
-        device: 'iPhone X'
-    });
+  const iPadRender = createDevice({
+    stylesheet,
+    device: "iPad"
+  });
 
-    const iPadRender = createDevice({
-        stylesheet,
-        device: 'iPad'
-    });
+  beforeEach(() => {
+    jest.setTimeout(10000);
+  });
 
-    beforeEach(() => {
-        jest.setTimeout(10000);
-      });
+  it("should be responsive", async () => {
+    const componentWithLargeText = cardComponent("Mike");
+    expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot(
+      imageSnapshotConfig("iPhone-responsive")
+    );
+    expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot(
+      imageSnapshotConfig("iPad-responsive")
+    );
+  });
 
-    it('should be responsive', async () => {
-        const componentWithLargeText = cardComponent('Mike');
-        expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPhone-responsive' });
-        expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPad-responsive' });
-    });
+  it("should be responsive with large texts", async () => {
+    const componentWithLargeText = cardComponent(
+      "Juan Moreno y Herrera-Jiménez"
+    );
+    expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot(
+      imageSnapshotConfig("iPhone-largeText")
+    );
+    expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot(
+      imageSnapshotConfig("iPad-largeText")
+    );
+  });
 
-    it('should be responsive with large texts', async () => {
-        const componentWithLargeText = cardComponent('Juan Moreno y Herrera-Jiménez');
-        expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPhone-largeText' });
-        expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPad-largeText' });
-    });
-
-    it('should show goshted elements when disabled', async () => {
-        const componentWithLargeText = cardComponent('Mike', true);
-        expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPhone-disabled' });
-        // For this case we can skip different devices :)
-        // expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot();
-    });
-
+  it("should show goshted elements when disabled", async () => {
+    const componentWithLargeText = cardComponent("Mike", true);
+    expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot(
+      imageSnapshotConfig("iPhone-disabled")
+    );
+    // For this case we can skip different devices :)
+    // expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot();
+  });
 });
 ```
 

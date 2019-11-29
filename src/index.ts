@@ -1,3 +1,4 @@
+import { MatchImageSnapshotOptions } from 'jest-image-snapshot';
 import * as devices from 'puppeteer/DeviceDescriptors';
 
 import { renderTemplate } from './lib/renderTemplate';
@@ -39,4 +40,17 @@ export const render = async (component: React.ReactElement, options: InputOption
 
   return takeScreenshot(template, opts);
 
+};
+
+const usedNames: string[] = [];
+
+export const imageSnapshotConfig = (customSnapshotIdentifier: string): MatchImageSnapshotOptions => {
+    if (usedNames.indexOf(customSnapshotIdentifier) !== -1) {
+        throw new Error(`Error: The name '${customSnapshotIdentifier}' for the snapshot is already used.`);
+    }
+    usedNames.push(customSnapshotIdentifier);
+
+    return {
+        customSnapshotIdentifier
+    };
 };

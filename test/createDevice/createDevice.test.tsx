@@ -2,7 +2,7 @@ import { toMatchImageSnapshot } from 'jest-image-snapshot';
 import path from 'path';
 import React from 'react';
 
-import { createDevice } from '../../src/index';
+import { createDevice, imageSnapshotConfig } from '../../src/index';
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -37,19 +37,19 @@ describe('Test Component', () => {
 
     it('should be responsive', async () => {
         const componentWithLargeText = cardComponent('Mike');
-        expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPhone-responsive' });
-        expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPad-responsive' });
+        expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot(imageSnapshotConfig('iPhone-responsive'));
+        expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot(imageSnapshotConfig('iPad-responsive'));
     });
 
     it('should be responsive with large texts', async () => {
         const componentWithLargeText = cardComponent('Juan Moreno y Herrera-Jiménez');
-        expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPhone-largeText' });
-        expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPad-largeText' });
+        expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot(imageSnapshotConfig('iPhone-largeText'));
+        expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot(imageSnapshotConfig('iPad-largeText'));
     });
 
     it('should show goshted elements when disabled', async () => {
         const componentWithLargeText = cardComponent('Mike', true);
-        expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot({ customSnapshotIdentifier: 'iPhone-disabled' });
+        expect(await iPhoneRender(componentWithLargeText)).toMatchImageSnapshot(imageSnapshotConfig('iPhone-disabled'));
 
         // For this case we can skip different devices :)
         // expect(await iPadRender(componentWithLargeText)).toMatchImageSnapshot();
