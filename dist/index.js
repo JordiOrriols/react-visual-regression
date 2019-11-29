@@ -11,10 +11,11 @@ var __assign = (this && this.__assign) || function () {
     return __assign.apply(this, arguments);
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -45,7 +46,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var renderTemplate_1 = require("./lib/renderTemplate");
 var takeScreenshot_1 = require("./lib/takeScreenshot");
@@ -55,18 +55,18 @@ var defaultOpts = {
     bodyPadding: 10
 };
 exports.createDevice = function (options) {
-    return function (component) { return __awaiter(_this, void 0, void 0, function () {
+    return function (component) { return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_a) {
             return [2, exports.render(component, options)];
         });
     }); };
 };
-exports.render = function (component, options) { return __awaiter(_this, void 0, void 0, function () {
+exports.render = function (component, options) { return __awaiter(void 0, void 0, void 0, function () {
     var opts, template;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
-                opts = __assign({}, defaultOpts, options);
+                opts = __assign(__assign({}, defaultOpts), options);
                 return [4, renderTemplate_1.renderTemplate(component, opts.stylesheet, opts.bodyPadding)];
             case 1:
                 template = _a.sent();
