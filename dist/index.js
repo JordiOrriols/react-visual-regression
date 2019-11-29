@@ -81,6 +81,6 @@ exports.imageSnapshotConfig = function (customSnapshotIdentifier) {
     }
     usedNames.push(customSnapshotIdentifier);
     return {
-        customSnapshotIdentifier: customSnapshotIdentifier
+        customSnapshotIdentifier: function () { return customSnapshotIdentifier; }
     };
 };
